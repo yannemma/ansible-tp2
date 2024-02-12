@@ -1,0 +1,24 @@
+---
+# Playbook pour copier un fichier avec Ansible et créer un répertoire
+
+# Définition du playbook
+- name: Copier un fichier avec Ansible et créer un répertoire
+  hosts: all
+  tasks:
+    # Tâche pour copier un fichier source vers une destination
+    - name: Copier le fichier
+      ansible.builtin.copy:
+        src: /home/tp
+        dest: /home/yen/Desktop/work
+
+    # Tâche pour créer le répertoire "yann"
+    - name: Créer le répertoire "yann"
+      ansible.builtin.file:
+        path: /home/yen/Desktop/work/yann
+        state: directory
+
+    # Tâche pour créer le fichier "merci" avec le contenu "je suis intelligent"
+    - name: Créer le fichier "merci" avec le contenu "je suis intelligent"
+      ansible.builtin.copy:
+        content: "je suis intelligent"
+        dest: /home/yen/Desktop/work/yann/merci
